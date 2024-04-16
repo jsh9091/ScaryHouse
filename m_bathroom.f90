@@ -20,21 +20,21 @@
  ! OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  ! SOFTWARE.
 
-module m_kitchen 
+module m_bathroom 
     use m_status
     implicit none
-    integer :: k_status
-    character(len=1) :: k_response
+    integer :: ba_status
+    character(len=1) :: ba_response
 
     contains
-    subroutine enterKitchen
-        print *, "You have entered the kitchen."
+    subroutine enterBathroom
+        print *, "You have entered the bathroom."
         do 
             ! display menu, and get user selection
             print *, "Make selection: H) Go back to hallway"
-            read(*, *, iostat=k_status) k_response
+            read(*, *, iostat=ba_status) ba_response
 
-            select case (k_response)
+            select case (ba_response)
             case ('s', 'S') 
                 call printStatus()
 
@@ -48,6 +48,6 @@ module m_kitchen
             end select
     
         end do
-    end subroutine enterKitchen
+    end subroutine enterBathroom
 
-end module m_kitchen
+end module m_bathroom

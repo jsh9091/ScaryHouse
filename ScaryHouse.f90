@@ -23,6 +23,7 @@
 program ScaryHouse
     use m_bedroom, only: enterBedroom 
     use m_kitchen, only: enterKitchen 
+    use m_bathroom, only: enterBathroom 
     use m_status
     implicit none
     character(len=1) :: response
@@ -66,7 +67,7 @@ program ScaryHouse
     subroutine hallwayMenu
         do
             ! display menu 
-            print *, "Make selection: B) Go to bedroom, K) Go to kitchen Q) Quit game"
+            print *, "Make selection: B) Go to bedroom, K) Go to kitchen A) Go to bathroom Q) Quit game"
             read(*, *, iostat=status) response
 
             select case (response)
@@ -76,6 +77,10 @@ program ScaryHouse
             case ('b', 'B')
                 print *, "Entering bedroom."
                 call enterBedroom()
+
+            case ('a', 'A')
+                print *, "Entering bathroom."
+                call enterBathroom()
 
             case ('k', 'K')
                 print *, "Entering Kitchen."
