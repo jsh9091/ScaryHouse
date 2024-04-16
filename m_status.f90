@@ -24,9 +24,11 @@ module m_status
     implicit none
 
     integer :: health
+    logical :: foundAtticKey
 
     contains
     subroutine printStatus
         print *, "Health: ", health
+        print *, "Found Attic Key: ", foundAtticKey
     end subroutine printStatus
 end module m_status

@@ -31,7 +31,7 @@ module m_kitchen
         print *, "You have entered the kitchen."
         do 
             ! display menu, and get user selection
-            print *, "Make selection: H) Go back to hallway"
+            print *, "Make selection: H) Go back to hallway E) Examine kitchen counter"
             read(*, *, iostat=k_status) k_response
 
             select case (k_response)
@@ -42,6 +42,9 @@ module m_kitchen
                 print *, "Returning to hallway."
                 exit
 
+            case ('e', 'E')
+                call examineCounter()
+
             case default
                 print*, "Invalid selection, try again." 
     
@@ -50,4 +53,15 @@ module m_kitchen
         end do
     end subroutine enterKitchen
 
+    subroutine examineCounter
+        print *, "You examine the kitchen counter and find a old dusty key."
+        print *, "Pick up key? Y/N"
+
+        read(*, *, iostat=k_status) k_response
+
+        if (k_response == 'y' .or. k_response == 'Y') then
+            foundAtticKey = .true.
+        end if
+
+    end subroutine examineCounter
 end module m_kitchen

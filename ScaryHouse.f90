@@ -31,6 +31,7 @@ program ScaryHouse
 
     ! initialize status state values
     health = 100
+    foundAtticKey = .false.
 
     ! introduction text 
     print *, "You are standing outside a scary old, abandoned house. "
@@ -117,7 +118,12 @@ program ScaryHouse
                 exit
 
             case ('a', 'A')
-                print *, "The attic door is locked."
+                if (foundAtticKey .eqv. .true.) then 
+                    print *, "The attic door is opens up."
+
+                else 
+                    print *, "The attic door is locked."
+                end if 
 
             case ('b', 'B')
                 print *, "The basement door is jammed. There is a strange sound behind the door."
