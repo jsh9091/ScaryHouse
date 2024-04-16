@@ -18,4 +18,4 @@ m_status.o m_status.mod: m_status.f90
 	
 .PHONEY: clean 
 clean: 
-	rm -f ScaryHouse ScaryHouse.o m_bedroom.o m_bedroom.mod m_kitchen.o m_kitchen.mod m_status.o m_status.mod 
+	rm -f ScaryHouse ScaryHouse.o m_bedroom.o m_bedroom.mod m_kitchen.o m_kitchen.mod m_bathroom.o m_bathroom.mod m_status.o m_status.mod 
