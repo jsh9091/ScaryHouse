@@ -34,7 +34,7 @@ program ScaryHouse
 
     ! introduction text 
     print *, "You are standing outside a scary old, abandoned house. "
-    print *, "They say there was a murder in that house. They say the house is haunted, but that can’t be true, can it? "
+    print *, "They say something bad happened in that house. They say the house is haunted, but that can’t be true, can it? "
 
     call frontPorchMenu()
 
@@ -67,7 +67,7 @@ program ScaryHouse
     subroutine hallwayMenu
         do
             ! display menu 
-            print *, "Make selection: B) Go to bedroom, K) Go to kitchen A) Go to bathroom Q) Quit game"
+            print *, "Make selection: B) Go to bedroom, K) Go to kitchen A) Go to bathroom E) Go to end of hallway Q) Quit game"
             read(*, *, iostat=status) response
 
             select case (response)
@@ -75,16 +75,16 @@ program ScaryHouse
                 call printStatus()
 
             case ('b', 'B')
-                print *, "Entering bedroom."
                 call enterBedroom()
 
             case ('a', 'A')
-                print *, "Entering bathroom."
                 call enterBathroom()
 
             case ('k', 'K')
-                print *, "Entering Kitchen."
                 call enterKitchen()
+
+            case ('e', 'E')
+                call endOfHallway()
 
             case ('q', 'Q')
                 print *, "Are you sure you want to quit the game? Y/N"
@@ -100,4 +100,33 @@ program ScaryHouse
             end select
         end do
     end subroutine hallwayMenu
+
+    subroutine endOfHallway
+        print *, "You have moved to the far end of the hallway."
+        do 
+            ! display menu, and get user selection
+            print *, "Make selection: H) Go back to main part of hallway A) Explore attic B) Explore basement"
+            read(*, *, iostat=status) response
+
+            select case (response)
+            case ('s', 'S') 
+                call printStatus()
+
+            case ('h', 'H')
+                print *, "Returning to hallway."
+                exit
+
+            case ('a', 'A')
+                print *, "The attic door is locked."
+
+            case ('b', 'B')
+                print *, "The basement door is jammed. There is a strange sound behind the door."
+
+            case default
+                print*, "Invalid selection, try again." 
+    
+            end select
+    
+        end do
+    end subroutine endOfHallway
 end program ScaryHouse
