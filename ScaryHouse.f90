@@ -24,6 +24,7 @@ program ScaryHouse
     use m_bedroom, only: enterBedroom 
     use m_kitchen, only: enterKitchen 
     use m_bathroom, only: enterBathroom 
+    use m_attic, only: enterAttic 
     use m_status
     implicit none
     character(len=1) :: response
@@ -120,7 +121,7 @@ program ScaryHouse
             case ('a', 'A')
                 if (foundAtticKey .eqv. .true.) then 
                     print *, "The attic door is opens up."
-
+                    call enterAttic()
                 else 
                     print *, "The attic door is locked."
                 end if 
