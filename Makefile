@@ -1,11 +1,14 @@
 ScaryHouse: ScaryHouse.o
-	gfortran m_status.o m_bedroom.o m_kitchen.o m_bathroom.o m_attic.o ScaryHouse.o -o ScaryHouse
+	gfortran m_status.o m_bedroom.o m_kitchen.o m_bathroom.o m_basement.o m_attic.o ScaryHouse.o -o ScaryHouse
 	
-ScaryHouse.o: ScaryHouse.f90 m_bedroom.mod m_kitchen.mod m_bathroom.mod m_attic.mod m_status.mod
+ScaryHouse.o: ScaryHouse.f90 m_bedroom.mod m_kitchen.mod m_bathroom.mod m_basement.mod m_attic.mod m_status.mod
 	gfortran -c ScaryHouse.f90 -o ScaryHouse.o
 	
 m_attic.o m_attic.mod: m_attic.f90 m_status.mod
 	gfortran -c m_attic.f90 -o m_attic.o
+	
+m_basement.o m_basement.mod: m_basement.f90 m_status.mod
+	gfortran -c m_basement.f90 -o m_basement.o
 	
 m_bathroom.o m_bathroom.mod: m_bathroom.f90 m_status.mod
 	gfortran -c m_bathroom.f90 -o m_bathroom.o
@@ -21,4 +24,4 @@ m_status.o m_status.mod: m_status.f90
 	
 .PHONEY: clean 
 clean: 
-	rm -f ScaryHouse ScaryHouse.o m_bedroom.o m_bedroom.mod m_kitchen.o m_kitchen.mod m_bathroom.o m_bathroom.mod m_attic.o m_attic.mod m_status.o m_status.mod 
+	rm -f ScaryHouse ScaryHouse.o m_bedroom.o m_bedroom.mod m_kitchen.o m_kitchen.mod m_bathroom.o m_bathroom.mod m_basement.o m_basement.mod m_attic.o m_attic.mod m_status.o m_status.mod 

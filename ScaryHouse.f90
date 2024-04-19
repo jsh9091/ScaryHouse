@@ -24,6 +24,7 @@ program ScaryHouse
     use m_bedroom, only: enterBedroom 
     use m_kitchen, only: enterKitchen 
     use m_bathroom, only: enterBathroom 
+    use m_basement, only: enterBasement 
     use m_attic, only: enterAttic 
     use m_status
     implicit none
