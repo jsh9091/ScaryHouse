@@ -25,15 +25,17 @@ module m_bedroom
     implicit none
     integer :: b_status
     character(len=1) :: b_response
-
+    logical :: lookedIntoMirror
 
     contains
     subroutine  enterBedroom
+        lookedIntoMirror = .false.
+
         print *, "You have entered a bedroom."
 
         do 
             ! display menu, and get user selection
-            print *, "Make selection: H) Go back to hallway"
+            print *, "Make selection: H) Go back to hallway E) Examine nightstand L) Look into mirror"
             read(*, *, iostat=b_status) b_response
 
             select case (b_response)
@@ -44,6 +46,12 @@ module m_bedroom
                 print *, "Returning to hallway."
                 exit
 
+            case ('e', 'E') 
+                call examineNightstand()
+
+            case ('l', 'L') 
+                call lookIntoMirror()
+
             case default
                 print*, "Invalid selection, try again." 
     
@@ -51,5 +59,36 @@ module m_bedroom
     
         end do
     end subroutine enterBedroom
+
+    subroutine  examineNightstand
+        print *, "You examine the nightstand next to the bed."
+
+        if (foundBaseballBat .eqv. .true.) then 
+            print *, "The nightstand is dusty and has nothing of interest on it."
+            
+        else 
+            print *, "You notice a baseball bat proped up on the nightstand behind the bed."
+            print *, "Pick up baseball bat? Y/N"
+    
+            read(*, *, iostat=b_status) b_response
+    
+            if (b_response == 'y' .or. b_response == 'Y') then
+                foundBaseballBat = .true.
+            end if
+        end if 
+    end subroutine examineNightstand
+
+    subroutine lookIntoMirror
+        print *, "You look into the mirror."
+
+        if (lookedIntoMirror .eqv. .false.) then
+            print *, "The mirror is dirty and you wipe your hand across it to clean it a little."
+            print *, "As your hand brushes across the mirror, you see your reflection and someone standing behind you."
+            print *, "You turn around but no one is there."
+            lookedIntoMirror = .true.
+        else 
+            print *, "You just see yourself."
+        end if 
+    end subroutine lookIntoMirror
 
 end module m_bedroom

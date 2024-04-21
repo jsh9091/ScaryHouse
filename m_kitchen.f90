@@ -54,14 +54,19 @@ module m_kitchen
     end subroutine enterKitchen
 
     subroutine examineCounter
-        print *, "You examine the kitchen counter and find a old dusty key."
-        print *, "Pick up key? Y/N"
 
-        read(*, *, iostat=k_status) k_response
-
-        if (k_response == 'y' .or. k_response == 'Y') then
-            foundAtticKey = .true.
-        end if
-
+        if (foundAtticKey .eqv. .true.) then 
+            print *, "The kitchen counter is dusty and has nothing of interest on it."
+            
+        else 
+            print *, "You examine the kitchen counter and find a old dusty key."
+            print *, "Pick up key? Y/N"
+    
+            read(*, *, iostat=k_status) k_response
+    
+            if (k_response == 'y' .or. k_response == 'Y') then
+                foundAtticKey = .true.
+            end if
+        end if 
     end subroutine examineCounter
 end module m_kitchen

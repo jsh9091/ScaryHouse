@@ -34,6 +34,7 @@ program ScaryHouse
     ! initialize status state values
     health = 100
     foundAtticKey = .false.
+    foundBaseballBat = .false.
 
     ! introduction text 
     print *, "You are standing outside a scary old, abandoned house. "
@@ -128,7 +129,13 @@ program ScaryHouse
                 end if 
 
             case ('b', 'B')
-                print *, "The basement door is jammed. There is a strange sound behind the door."
+                print *, "The basement door is jammed and only opens slightly. There is a strange sound behind the door."
+
+                if (foundBaseballBat .eqv. .true.) then 
+                    print *, "You try using the baseball bat as a crowbar to open the door."
+                    print *, "The door opens, and you step into the basement."
+                    call enterBasement()
+                end if
 
             case default
                 print*, "Invalid selection, try again." 

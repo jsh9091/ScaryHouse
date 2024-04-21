@@ -25,6 +25,7 @@ module m_status
 
     integer :: health
     logical :: foundAtticKey
+    logical :: foundBaseballBat
 
     contains
     subroutine printStatus
