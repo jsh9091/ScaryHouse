@@ -31,5 +31,6 @@ module m_status
     subroutine printStatus
         print *, "Health: ", health
         print *, "Found Attic Key: ", foundAtticKey
+        print *, "Found Baseball Bat: ", foundBaseballBat
     end subroutine printStatus
 end module m_status

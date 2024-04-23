@@ -21,13 +21,17 @@
  ! SOFTWARE.
 
 program ScaryHouse
+    ! import code from modules
     use m_bedroom, only: enterBedroom 
     use m_kitchen, only: enterKitchen 
     use m_bathroom, only: enterBathroom 
     use m_basement, only: enterBasement 
     use m_attic, only: enterAttic 
     use m_status
+
+    ! very important, do not allow typing of variables based off variable name
     implicit none
+
     character(len=1) :: response
     integer :: status
 
@@ -42,11 +46,13 @@ program ScaryHouse
 
     call frontPorchMenu()
 
+    ! if user selected enter halway in porch menu subroutine
     if (response == 'h' .or. response == 'H') then
         call hallwayMenu()
     end if
 
     contains
+    ! menu presented only at begining of game
     subroutine frontPorchMenu
         do 
             print *, "H) Enter the house. Q) Quit the game."
@@ -68,10 +74,11 @@ program ScaryHouse
         end do
     end subroutine frontPorchMenu
 
+    ! main central menu of bulk of game
     subroutine hallwayMenu
         do
             ! display menu 
-            print *, "Make selection: B) Go to bedroom, K) Go to kitchen A) Go to bathroom E) Go to end of hallway Q) Quit game"
+            print *, "Make selection: B) Go to bedroom K) Go to kitchen A) Go to bathroom E) Go to end of hallway Q) Quit game"
             read(*, *, iostat=status) response
 
             select case (response)
@@ -105,6 +112,7 @@ program ScaryHouse
         end do
     end subroutine hallwayMenu
 
+    ! menu for entering basement and attic locations 
     subroutine endOfHallway
         print *, "You have moved to the far end of the hallway."
         do 
@@ -139,9 +147,7 @@ program ScaryHouse
 
             case default
                 print*, "Invalid selection, try again." 
-    
             end select
-    
         end do
     end subroutine endOfHallway
 end program ScaryHouse

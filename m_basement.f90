@@ -29,9 +29,10 @@ module m_basement
     contains
     subroutine enterBasement 
         print *, "You have entered the basement."
+        print *, "It is very dark. You hear a groaning sound, probably the house settling, right?"
         do 
             ! display menu, and get user selection
-            print *, "Make selection: H) Go back to hallway"
+            print *, "Make selection: H) Go back to hallway E) Examine workbench"
             read(*, *, iostat=bc_status) bc_response
 
             select case (bc_response)
@@ -42,6 +43,9 @@ module m_basement
                 print *, "Returning to hallway."
                 exit
 
+            case ('e', 'E')
+                call examineWorkbench()
+
             case default
                 print*, "Invalid selection, try again." 
     
@@ -49,5 +53,22 @@ module m_basement
     
         end do
     end subroutine enterBasement
+
+    subroutine examineWorkbench
+
+        if (foundAtticKey .eqv. .true.) then 
+            print *, "The workbench is dusty and has nothing of interest on it."
+            
+        else 
+            print *, "You examine the workbench table top and find a old dusty key."
+            print *, "Pick up key? Y/N"
+    
+            read(*, *, iostat=bc_status) bc_response
+    
+            if (bc_response == 'y' .or. bc_response == 'Y') then
+                foundAtticKey = .true.
+            end if
+        end if 
+    end subroutine examineWorkbench
 
 end module m_basement
