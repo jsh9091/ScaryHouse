@@ -23,8 +23,6 @@
 module m_bedroom
     use m_status
     implicit none
-    integer :: b_status
-    character(len=1) :: b_response
     logical :: lookedIntoMirror
 
     contains
@@ -35,10 +33,10 @@ module m_bedroom
 
         do 
             ! display menu, and get user selection
-            print *, "Make selection: H) Go back to hallway E) Examine nightstand L) Look into mirror"
-            read(*, *, iostat=b_status) b_response
+            print *, "Make selection: H) Go back to hallway E) Examine nightstand L) Look into mirror Q) Quit"
+            read(*, *, iostat=io_status) response
 
-            select case (b_response)
+            select case (response)
             case ('s', 'S') 
                 call printStatus()
 
@@ -52,6 +50,9 @@ module m_bedroom
             case ('l', 'L') 
                 call lookIntoMirror()
 
+            case ('q', 'Q')
+                call quitProgram()
+ 
             case default
                 print*, "Invalid selection, try again." 
     
@@ -70,9 +71,9 @@ module m_bedroom
             print *, "You notice a baseball bat proped up on the nightstand behind the bed."
             print *, "Pick up baseball bat? Y/N"
     
-            read(*, *, iostat=b_status) b_response
+            read(*, *, iostat=io_status) response
     
-            if (b_response == 'y' .or. b_response == 'Y') then
+            if (response == 'y' .or. response == 'Y') then
                 foundBaseballBat = .true.
             end if
         end if 

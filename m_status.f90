@@ -23,16 +23,29 @@
 module m_status
     implicit none
 
+    character(len=1) :: response
+    integer :: io_status
+    
     integer :: health
     logical :: foundAtticKey
     logical :: foundBaseballBat
-    logical :: foundSafePinNumber
+    logical :: foundSafeCombination
 
     contains
     subroutine printStatus
         print *, "Health: ", health
         print *, "Found Attic Key: ", foundAtticKey
         print *, "Found Baseball Bat: ", foundBaseballBat
-        print *, "Found Pin code for safe: ", foundSafePinNumber
+        print *, "Found combination for safe: ", foundSafeCombination
     end subroutine printStatus
+
+    subroutine quitProgram
+        print *, "Are you sure you want to quit the game? Y/N"
+        read(*, *) response
+        if (response == 'y' .or. response == 'Y') then
+            print *, "You have choosen to leave the house. &
+                &That's probably the safest thing to do anyway. Goodbye."
+            stop ! shut down the program
+        end if
+    end subroutine quitProgram
 end module m_status

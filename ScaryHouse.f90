@@ -32,15 +32,12 @@ program ScaryHouse
     ! very important, do not allow typing of variables based off variable name
     implicit none
 
-    character(len=1) :: response
-    integer :: status
-
     ! initialize status state values
     health = 100
     foundAtticKey = .false.
     foundBaseballBat = .false.
-    foundSafePinNumber = .false.
-
+    foundSafeCombination = .false.
+ 
     ! introduction text 
     print *, "You are standing outside a scary old, abandoned house. "
     print *, "They say something bad happened in that house. They say the house is haunted, but that can’t be true, can it? "
@@ -57,17 +54,19 @@ program ScaryHouse
     subroutine frontPorchMenu
         do 
             print *, "H) Enter the house. Q) Quit the game."
-            read(*, *, iostat=status) response
+            read(*, *, iostat=io_status) response
     
             select case (response)
+
             case ('s', 'S') 
                 call printStatus()
+
             case ('h', 'H') 
                 print *, "Entering the house."
                 exit
+
             case ('q', 'Q')
-                print *, "Giving up and going home is probably the safer thing to do anyway."
-                exit
+                call quitProgram()
     
             case default
                 print*, "Invalid selection, try again." 
@@ -80,7 +79,7 @@ program ScaryHouse
         do
             ! display menu 
             print *, "Make selection: B) Go to bedroom K) Go to kitchen A) Go to bathroom E) Go to end of hallway Q) Quit game"
-            read(*, *, iostat=status) response
+            read(*, *, iostat=io_status) response
 
             select case (response)
             case ('s', 'S') 
@@ -99,13 +98,7 @@ program ScaryHouse
                 call endOfHallway()
 
             case ('q', 'Q')
-                print *, "Are you sure you want to quit the game? Y/N"
-                read(*, *, iostat=status) response
-                if (response == 'y' .or. response == 'Y') then
-                    print *, "You have choosen to leave the house. &
-                        &That's probably the safest thing to do anyway. Goodbye."
-                    exit
-                end if
+                call quitProgram()
     
             case default
                 print*, "Invalid selection, try again." 
@@ -119,7 +112,7 @@ program ScaryHouse
         do 
             ! display menu, and get user selection
             print *, "Make selection: H) Go back to main part of hallway A) Explore attic B) Explore basement"
-            read(*, *, iostat=status) response
+            read(*, *, iostat=io_status) response
 
             select case (response)
             case ('s', 'S') 

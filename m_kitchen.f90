@@ -23,18 +23,16 @@
 module m_kitchen 
     use m_status
     implicit none
-    integer :: k_status
-    character(len=1) :: k_response
 
     contains
     subroutine enterKitchen
         print *, "You have entered the kitchen."
         do 
             ! display menu, and get user selection
-            print *, "Make selection: H) Go back to hallway E) Examine kitchen counter"
-            read(*, *, iostat=k_status) k_response
+            print *, "Make selection: H) Go back to hallway E) Examine kitchen counter Q) Quit"
+            read(*, *, iostat=io_status) response
 
-            select case (k_response)
+            select case (response)
             case ('s', 'S') 
                 call printStatus()
 
@@ -44,6 +42,9 @@ module m_kitchen
 
             case ('e', 'E')
                 call examineCounter()
+
+            case ('q', 'Q')
+                call quitProgram()
 
             case default
                 print*, "Invalid selection, try again." 

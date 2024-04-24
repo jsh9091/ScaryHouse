@@ -23,8 +23,6 @@
 module m_basement 
     use m_status
     implicit none
-    integer :: bc_status
-    character(len=1) :: bc_response
 
     contains
     subroutine enterBasement 
@@ -32,10 +30,10 @@ module m_basement
         print *, "It is very dark. You hear a groaning sound, probably the house settling, right?"
         do 
             ! display menu, and get user selection
-            print *, "Make selection: H) Go back to hallway E) Examine workbench"
-            read(*, *, iostat=bc_status) bc_response
+            print *, "Make selection: H) Go back to hallway E) Examine workbench Q) Quit"
+            read(*, *, iostat=io_status) response
 
-            select case (bc_response)
+            select case (response)
             case ('s', 'S') 
                 call printStatus()
 
@@ -45,6 +43,9 @@ module m_basement
 
             case ('e', 'E')
                 call examineWorkbench()
+
+            case ('q', 'Q')
+                call quitProgram()
 
             case default
                 print*, "Invalid selection, try again." 
@@ -63,9 +64,9 @@ module m_basement
             print *, "You examine the workbench table top and find a old dusty key."
             print *, "Pick up key? Y/N"
     
-            read(*, *, iostat=bc_status) bc_response
+            read(*, *, iostat=io_status) response
     
-            if (bc_response == 'y' .or. bc_response == 'Y') then
+            if (response == 'y' .or. response == 'Y') then
                 foundAtticKey = .true.
             end if
         end if 

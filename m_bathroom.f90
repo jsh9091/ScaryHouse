@@ -23,18 +23,16 @@
 module m_bathroom 
     use m_status
     implicit none
-    integer :: ba_status
-    character(len=1) :: ba_response
 
     contains
     subroutine enterBathroom
         print *, "You have entered the bathroom."
         do 
             ! display menu, and get user selection
-            print *, "Make selection: H) Go back to hallway E) Examine mirror"
-            read(*, *, iostat=ba_status) ba_response
+            print *, "Make selection: H) Go back to hallway E) Examine mirror Q) Quit"
+            read(*, *, iostat=io_status) response
 
-            select case (ba_response)
+            select case (response)
             case ('s', 'S') 
                 call printStatus()
 
@@ -44,6 +42,9 @@ module m_bathroom
 
             case ('e', 'E')
                 call examineBathroomMirror()
+
+            case ('q', 'Q')
+                call quitProgram()
 
             case default
                 print*, "Invalid selection, try again." 
@@ -56,7 +57,7 @@ module m_bathroom
         print *, "You open the bathoom mirror to look at the medicine cabinet behind it."
         print *, "The medicine cabinet is empty except for a first aid kit."
         print *, "The back of the medicine cabinet door has the numbers 5424 written on it. You wonder what that is about."
-        foundSafePinNumber = .true.
+        foundSafeCombination = .true.
     end subroutine examineBathroomMirror
 
 end module m_bathroom
