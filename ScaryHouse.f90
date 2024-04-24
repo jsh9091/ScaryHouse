@@ -39,6 +39,7 @@ program ScaryHouse
     health = 100
     foundAtticKey = .false.
     foundBaseballBat = .false.
+    foundSafePinNumber = .false.
 
     ! introduction text 
     print *, "You are standing outside a scary old, abandoned house. "

@@ -26,11 +26,13 @@ module m_status
     integer :: health
     logical :: foundAtticKey
     logical :: foundBaseballBat
+    logical :: foundSafePinNumber
 
     contains
     subroutine printStatus
         print *, "Health: ", health
         print *, "Found Attic Key: ", foundAtticKey
         print *, "Found Baseball Bat: ", foundBaseballBat
+        print *, "Found Pin code for safe: ", foundSafePinNumber
     end subroutine printStatus
 end module m_status

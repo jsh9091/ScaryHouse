@@ -31,7 +31,7 @@ module m_bathroom
         print *, "You have entered the bathroom."
         do 
             ! display menu, and get user selection
-            print *, "Make selection: H) Go back to hallway"
+            print *, "Make selection: H) Go back to hallway E) Examine mirror"
             read(*, *, iostat=ba_status) ba_response
 
             select case (ba_response)
@@ -42,12 +42,21 @@ module m_bathroom
                 print *, "Returning to hallway."
                 exit
 
+            case ('e', 'E')
+                call examineBathroomMirror()
+
             case default
                 print*, "Invalid selection, try again." 
     
             end select
-    
         end do
     end subroutine enterBathroom
+
+    subroutine examineBathroomMirror
+        print *, "You open the bathoom mirror to look at the medicine cabinet behind it."
+        print *, "The medicine cabinet is empty except for a first aid kit."
+        print *, "The back of the medicine cabinet door has the numbers 5424 written on it. You wonder what that is about."
+        foundSafePinNumber = .true.
+    end subroutine examineBathroomMirror
 
 end module m_bathroom
