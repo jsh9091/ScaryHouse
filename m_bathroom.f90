@@ -24,10 +24,20 @@ module m_bathroom
     use m_status
     implicit none
 
+    logical :: medicineCabinetOpen
+    logical :: skeletonScare
+
     contains
     subroutine enterBathroom
+        medicineCabinetOpen = .false.
+        skeletonScare = .false.
+
         print *, "You have entered the bathroom."
         do 
+            if (skeletonScare .eqv. .true.) then
+                exit
+            end if 
+
             ! display menu, and get user selection
             print *, "Make selection: H) Go back to hallway E) Examine mirror Q) Quit"
             read(*, *, iostat=io_status) response
@@ -54,10 +64,24 @@ module m_bathroom
     end subroutine enterBathroom
 
     subroutine examineBathroomMirror
-        print *, "You open the bathoom mirror to look at the medicine cabinet behind it."
-        print *, "The medicine cabinet is empty except for a first aid kit."
-        print *, "The back of the medicine cabinet door has the numbers 5424 written on it. You wonder what that is about."
-        foundSafeCombination = .true.
+        if (medicineCabinetOpen .eqv. .false.) then
+            print *, "You open the bathoom mirror to look at the medicine cabinet behind it."
+            print *, "The medicine cabinet is empty except for a first aid kit."
+            print *, "The back of the medicine cabinet door has the numbers 5424 written on it. You wonder what that is about."
+            foundSafeCombination = .true.
+            medicineCabinetOpen = .true.
+        else 
+            print *, "Close medicine cabinet? Y/N"
+            read(*, *, iostat=io_status) response
+            if (response == 'y' .or. response == 'Y') then
+                print *, "You close the medicine cabinet."
+                print *, "The reflection you see now in the mirror where you should have seen  &
+                &your reflection, you instead see a skeleton."
+                print *, "You scream and run out to the hallway. "
+                skeletonScare = .true.
+                medicineCabinetOpen = .false.
+            end if
+        end if
     end subroutine examineBathroomMirror
 
 end module m_bathroom

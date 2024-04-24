@@ -94,14 +94,14 @@ module m_attic
             call takeSmokeInjury() 
 
             ! display menu, and get user selection
-            print *, "Make selection: L) Look around the attic I) Stand around looking at the fire like an idiot Q) Quit"
+            print *, "Make selection: L) Look around the attic F) Stand around looking at the fire like an fool Q) Quit"
             read(*, *, iostat=io_status) response
 
             select case (response)
             case ('s', 'S') 
                 call printStatus()
 
-            case ('i', 'I')
+            case ('f', 'F')
                 print *, "The fire grows and the attic fills with smoke while you do nothing."
 
             case ('l', 'L') 
