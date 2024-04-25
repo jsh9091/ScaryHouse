@@ -23,13 +23,20 @@
 module m_kitchen 
     use m_status
     implicit none
+    logical :: lookedOutWindow
 
     contains
     subroutine enterKitchen
+        lookedOutWindow = .false.
         print *, "You have entered the kitchen."
         do 
+            if (lookedOutWindow .eqv. .true.) then 
+                exit
+            end if
+
             ! display menu, and get user selection
-            print *, "Make selection: H) Go back to hallway E) Examine kitchen counter Q) Quit"
+            print *, "Make selection: H) Go back to hallway E) Examine kitchen counter &
+            &L) Look in fridge W) Look out the window Q) Quit"
             read(*, *, iostat=io_status) response
 
             select case (response)
@@ -42,6 +49,12 @@ module m_kitchen
 
             case ('e', 'E')
                 call examineCounter()
+
+            case ('l', 'L')
+                call lookInRefrigerator()
+
+            case ('w', 'W')
+                call lookOutWindow()
 
             case ('q', 'Q')
                 call quitProgram()
@@ -59,4 +72,21 @@ module m_kitchen
         print *, "The eyes of the woman seem to follow you and give you the creeps."
         print *, "For some reason you want to be anywhere else."
     end subroutine examineCounter
+
+    subroutine lookInRefrigerator
+        print *, "You walk up to an old refrigerator and open the door."
+        print *, "There is no power in the house, so it is no surprise that no light turns on."
+        print *, "It does not look like there is any food, but there is a terrible smell."
+        print *, "You hear a sqeaking sound, and then realize there is a rat in the fridge."
+        print *, "You slam the door shut and walk away from the refrigerator."
+    end subroutine lookInRefrigerator
+
+    subroutine lookOutWindow
+        print *, "You walk over to the window and look outside."
+        print *, "It looks like something is moving outside, but you are not sure."
+        print *, "There is a flash of lightning."
+        print *, "As the flash happens, instead of seeing your own reflection in the glass, you see someone else's face."
+        print *, "You run out of the room."
+        lookedOutWindow = .true.
+    end subroutine lookOutWindow
 end module m_kitchen

@@ -77,6 +77,7 @@ program ScaryHouse
     ! main central menu of bulk of game
     subroutine hallwayMenu
         do
+            print *, "You are in the main hallway."
             ! display menu 
             print *, "Make selection: B) Go to bedroom K) Go to kitchen A) Go to bathroom E) Go to end of hallway Q) Quit game"
             read(*, *, iostat=io_status) response

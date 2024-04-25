@@ -23,13 +23,19 @@
 module m_status
     implicit none
 
+    ! user input variables 
     character(len=1) :: response
     integer :: io_status
-    
+
+    ! game play status variables 
     integer :: health
     logical :: foundAtticKey
     logical :: foundBaseballBat
     logical :: foundSafeCombination
+
+    ! random number variables
+    real :: r
+    integer :: randomNumber
 
     contains
     subroutine printStatus
@@ -48,4 +54,18 @@ module m_status
             stop ! shut down the program
         end if
     end subroutine quitProgram
+
+    ! updates value of global randomNumber variable
+    subroutine getRandomeNumber
+        call random_seed()
+        call random_number(r)
+    
+        !print *, r
+
+        r = r * 10.0
+        !print *, r
+
+        randomNumber = int(r)
+        !print *, randomNumber
+    end subroutine getRandomeNumber
 end module m_status
