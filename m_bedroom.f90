@@ -32,6 +32,8 @@ module m_bedroom
         print *, "You have entered a bedroom."
 
         do 
+            call monsterAttack()
+            
             ! display menu, and get user selection
             print *, "Make selection: H) Go back to hallway E) Examine nightstand L) Look into mirror Q) Quit"
             read(*, *, iostat=io_status) response

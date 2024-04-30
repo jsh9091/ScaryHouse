@@ -142,8 +142,6 @@ module m_attic
 
             case ('o', 'O')
                 print *, "The window opens up."
-                !print *, "Press Enter key to craw through window..."
-                !read(*, *)
                 call crawlOnToRoof()
 
             case ('l', 'L') 

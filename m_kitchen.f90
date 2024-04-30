@@ -34,6 +34,8 @@ module m_kitchen
                 exit
             end if
 
+            call monsterAttack()
+            
             ! display menu, and get user selection
             print *, "Make selection: H) Go back to hallway E) Examine kitchen counter &
             &L) Look in fridge W) Look out the window Q) Quit"

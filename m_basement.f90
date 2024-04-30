@@ -29,6 +29,8 @@ module m_basement
         print *, "You have entered the basement."
         print *, "It is very dark. You hear a groaning sound, probably the house settling, right?"
         do 
+            call monsterAttack()
+            
             ! display menu, and get user selection
             print *, "Make selection: H) Go back to hallway E) Examine workbench Q) Quit"
             read(*, *, iostat=io_status) response

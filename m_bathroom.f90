@@ -38,6 +38,8 @@ module m_bathroom
                 exit
             end if 
 
+            call monsterAttack()
+            
             ! display menu, and get user selection
             print *, "Make selection: H) Go back to hallway E) Examine mirror Q) Quit"
             read(*, *, iostat=io_status) response
