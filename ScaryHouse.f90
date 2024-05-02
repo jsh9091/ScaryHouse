@@ -37,6 +37,7 @@ program ScaryHouse
     foundAtticKey = .false.
     foundBaseballBat = .false.
     foundSafeCombination = .false.
+    usedFirstAidKit = .false.
  
     ! introduction text 
     print *, "You are standing outside a scary old, abandoned house. "

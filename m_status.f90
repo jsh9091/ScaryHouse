@@ -32,6 +32,7 @@ module m_status
     logical :: foundAtticKey
     logical :: foundBaseballBat
     logical :: foundSafeCombination
+    logical :: usedFirstAidKit
 
     ! random number variables
     real :: r
@@ -44,6 +45,7 @@ module m_status
         print *, "Found Attic Key: ", foundAtticKey
         print *, "Found Baseball Bat: ", foundBaseballBat
         print *, "Found combination for safe: ", foundSafeCombination
+        print *, "Used first aid kit: ", usedFirstAidKit
     end subroutine printStatus
 
     ! offer user a choice to stop the game 

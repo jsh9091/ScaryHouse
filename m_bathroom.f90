@@ -72,6 +72,7 @@ module m_bathroom
             print *, "The back of the medicine cabinet door has the numbers 5424 written on it. You wonder what that is about."
             foundSafeCombination = .true.
             medicineCabinetOpen = .true.
+            call confirmUseFirstAidKit()
         else 
             print *, "Close medicine cabinet? Y/N"
             read(*, *, iostat=io_status) response
@@ -85,5 +86,35 @@ module m_bathroom
             end if
         end if
     end subroutine examineBathroomMirror
+
+    subroutine confirmUseFirstAidKit
+        if (usedFirstAidKit .eqv. .false.) then
+            print *, "Your current health is: ", health
+            print *, "Do you want to use the first aid kit? Y/N"
+            read(*, *, iostat=io_status) response
+            if (response == 'y' .or. response == 'Y') then
+                if (health > 80) then 
+                    print *, "You can only use the first aid kit once. Are you sure you want to use the first ait kit now? Y/N"
+                    read(*, *, iostat=io_status) response
+                    if (response == 'y' .or. response == 'Y') then
+                        call useTheFirstAidKit()
+                    end if
+                else 
+                    call useTheFirstAidKit()
+                end if 
+            end if
+        else 
+            print *, "You notice that the first aid kit is empty."
+        end if
+    end subroutine confirmUseFirstAidKit
+
+    subroutine useTheFirstAidKit
+        health = health + 20
+        if (health > 100) then 
+            health = 100
+        end if
+        print *, "Your new current health is: ", health
+        usedFirstAidKit = .true.
+    end subroutine useTheFirstAidKit
 
 end module m_bathroom
