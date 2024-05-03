@@ -7,12 +7,14 @@ To run Scary House:
 
 1. Clone the ScaryHouse repository. 
 
-2. Open the ScaryHouse directory in a terminal. 
+2. Check that gfortran and make are installed on the system.
 
-3. Type `make` into the terminal and press return to compile the game.
+3. Open the ScaryHouse directory in a terminal. 
 
-4. Type `./ScaryHouse` to start the game. 
+4. Type `make` into the terminal and press return to compile the game.
 
-5. Follow the menu options in the game to play. 
+5. Type `./ScaryHouse` to start the game. 
 
-6. Optional: While the game is not running, type `make clean` to delete the object and binary files.  
+6. Follow the menu options in the game to play. 
+
+7. Optional: While the game is not running, type `make clean` to delete the object and binary files.  
