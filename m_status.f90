@@ -152,7 +152,7 @@ module m_status
             case ('s', 'S') 
                 print *, "You say hello to the ghost."
                 call getRandomeNumber()
-                print *, "The ghost opens her mouth as if to start saying something back to you.."
+                print *, "The ghost opens her mouth as if to start saying something back to you... "
                 if (randomNumber < 3) then
                     print *, "the ghost lets out a scream that makes you fall over onto the floor."
                     print *, "The face on the ghost looks angry, and not at all like it did before."

@@ -70,7 +70,7 @@ module m_bedroom
             print *, "The nightstand is dusty and has nothing of interest on it."
             
         else 
-            print *, "You notice a baseball bat proped up on the nightstand behind the bed."
+            print *, "You notice a baseball bat propped up on the nightstand behind the bed."
             print *, "Pick up baseball bat? Y/N"
     
             read(*, *, iostat=io_status) response

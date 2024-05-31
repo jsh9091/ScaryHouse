@@ -63,7 +63,7 @@ module m_basement
             print *, "The workbench is dusty and has nothing of interest on it."
             
         else 
-            print *, "You examine the workbench table top and find a old dusty key."
+            print *, "You examine the workbench table top and find an old dusty key."
             print *, "Pick up key? Y/N"
     
             read(*, *, iostat=io_status) response

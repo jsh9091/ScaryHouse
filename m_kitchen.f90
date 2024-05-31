@@ -79,7 +79,7 @@ module m_kitchen
         print *, "You walk up to an old refrigerator and open the door."
         print *, "There is no power in the house, so it is no surprise that no light turns on."
         print *, "It does not look like there is any food, but there is a terrible smell."
-        print *, "You hear a sqeaking sound, and then realize there is a rat in the fridge."
+        print *, "You hear a squeaking sound, and then realize there is a rat in the fridge."
         print *, "You slam the door shut and walk away from the refrigerator."
     end subroutine lookInRefrigerator
 

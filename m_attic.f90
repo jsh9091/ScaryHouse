@@ -64,12 +64,12 @@ module m_attic
     end subroutine lookAroundAttic
 
     subroutine examineSafe
-        print *, "The safe has an old fashion combinaion lock."
+        print *, "The safe has an old fashion combination lock."
 
         if (foundSafeCombination .eqv. .true.) then
             print *, "You try using the numbers you found behind the bathroom mirror as a combination."
             print *, "The safe opens."
-            print *, "You can't belive what you are seeing inside the safe."
+            print *, "You can't believe what you are seeing inside the safe."
             print *, "You take the treasure out of the safe."
             print *, "Press the Enter key continue..."
             read (*, *)
@@ -94,7 +94,7 @@ module m_attic
             call takeSmokeInjury() 
 
             ! display menu, and get user selection
-            print *, "Make selection: L) Look around the attic F) Stand around looking at the fire like an fool Q) Quit"
+            print *, "Make selection: L) Look around the attic F) Stand around looking at the fire like a fool Q) Quit"
             read(*, *, iostat=io_status) response
 
             select case (response)
@@ -124,7 +124,7 @@ module m_attic
 
     subroutine takeSmokeInjury
         health = health - 1
-        print *, "You breath in smoke. Health: ", health
+        print *, "You breathe in smoke. Health: ", health
     end subroutine takeSmokeInjury
 
     subroutine atticWindow

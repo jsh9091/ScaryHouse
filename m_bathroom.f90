@@ -67,7 +67,7 @@ module m_bathroom
 
     subroutine examineBathroomMirror
         if (medicineCabinetOpen .eqv. .false.) then
-            print *, "You open the bathoom mirror to look at the medicine cabinet behind it."
+            print *, "You open the bathroom mirror to look at the medicine cabinet behind it."
             print *, "The medicine cabinet is empty except for a first aid kit."
             print *, "The back of the medicine cabinet door has the numbers 5424 written on it. You wonder what that is about."
             foundSafeCombination = .true.
